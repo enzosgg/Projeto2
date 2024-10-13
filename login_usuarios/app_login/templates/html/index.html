@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login de paciente</title>
+    <link rel="stylesheet" href='{% static "css/style.css" %}'>
+</head>
+<body>
+    <header class ="cabecalho">
+        <img class="icon" src='{% static "images/coracao2.png" %}' alt="">
+    </header>
+    <main class="conteudo">    
+        <div class=form-div>
+            <section class="Titulo">
+                <h3>Digite CPF e Senha para efetuar Login</h3>
+            </section>
+            <form action='{% url "listagem_usuarios" %}' method="post" id="form" class="form">
+                {% csrf_token %}
+                <div class="formulario">
+                    <label for="CPF">CPF:</label> 
+                    <input name="CPF" type="text" id="CPF" placeholder="000.000.000-00" maxlength="14">
+                    <a>Mensagem de erro</a>
+                </div>
+                <div class="formulario">   
+                    <label for="Senha">Senha:</label>
+                    <input name="Senha" type="password" id="Senha" placeholder="Digite sua Senha">
+                    <a>Mensagem de erro</a> 
+                </div>
+                <button type="submit">Login</button> 
+            </form>
+        </div>    
+    </main>   
+
+    <script src='{% static "js/script.js" %}'></script>
+
+</body>
+</html>

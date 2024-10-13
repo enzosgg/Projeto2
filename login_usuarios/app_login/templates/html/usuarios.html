@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href='{% static "css/usuarios.css" %}'>
+</head>
+<body>
+    <header class="cabecalho">
+        <img class="icon" src='{% static "images/coracao2.png" %}' alt="">
+        <nav class="menu">
+            <a class="nome">Nome</a>
+            <button class="perfil">Perfil</button>
+        </nav>
+    </header>
+
+    <main class="conteudo-tabela">
+        <div class="tabela">
+            <section class="Titulo">
+                <h3 id="titulo-consultas">Consultas</h3>
+            </section>
+            <div class="dados" id="dados" style="visibility: hidden;">
+                <form id="tabela-dados" class="tabela-dados">
+                    <label for="telefone">Número de telefone:</label>
+                    <input type="tel" id="telefone">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email">
+                    <button class="confirmacao" type="submit">confirmar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <p>Para confirmar, cancelar, reagendar ou checar dados da consulta, selecione um item da tabela.</p>
+    </footer>
+
+    <script src='{% static "js/usuarios.js" %}'></script>
+</body>
+</html>

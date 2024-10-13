@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #e2e2e2;
+}
+
+.cabecalho {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+}
+
+.menu {
+    display: flex;
+    gap: 80px;
+}
+
+.icon {
+    max-width: 60px;
+    width: 8%;
+}
+
+.perfil {
+    border: none;
+    background-color: #e2e2e2;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.nome {
+    font-size: 16px;
+}
+
+.conteudo-tabela {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabela {
+    background-color: #f7f5f0;
+    width: 95%;
+    max-width: 800px;
+    height: 100%;
+    max-height: 70vh;
+    min-height: 350px;
+    border-radius: 14px;
+    box-shadow: 0px 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.dados{
+    visibility: hidden;
+    width: 100%;
+    max-width: 800px;
+    height: 70vh;
+}
+
+.Titulo {
+    text-align: center;
+    padding: 16px;
+    background: linear-gradient(90deg, #0cbff5, #0cf5e9); 
+    font-size: 30px;
+    color: #333;   
+}
+
+
+.tabela-dados {
+    padding: 18px;
+}
+
+label {
+    margin-bottom: 5px;
+    font-size: 20px;
+    display: block;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 8px;
+    border: 1px solid #0cbff5;
+    border-radius: 10px;
+}
+
+.confirmacao {
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px;
+    background-color: #0ab1db;
+    border: none;
+    border-radius: 14px;
+    color: #e2e2e2;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.confirmacao:hover {
+    background-color: #0cf5e9;
+    transition: 1s;
+    color: #333;
+}
+
+.rodape {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p {
+    text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-top: 3px solid #333;
+    padding-top: 10px;
+    visibility: visible;
+}
