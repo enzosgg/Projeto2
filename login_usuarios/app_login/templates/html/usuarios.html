@@ -4,40 +4,61 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
     <link rel="stylesheet" href='{% static "css/usuarios.css" %}'>
 </head>
 <body>
     <header class="cabecalho">
-        <img class="icon" src='{% static "images/coracao2.png" %}' alt="">
+        <img class="icon" src='{% static "images/coracao2.png" %}' alt="Ícone de coração">
         <nav class="menu">
-            <a class="nome">Nome</a>
-            <button class="perfil">Perfil</button>
+            {% if usuarios %}
+                <a class="nome">{{ usuarios.0.Nome }}</a> 
+                <a href="{% url 'perfil_usuario' usuarios.0.id_usuario %}">
+                    <button class="perfil">Perfil</button>
+                </a>
+            {% endif %}
         </nav>
     </header>
 
     <main class="conteudo-tabela">
         <div class="tabela">
             <section class="Titulo">
-                <h3 id="titulo-consultas">Consultas</h3>
+                <h3>Consultas</h3>
             </section>
-            <div class="dados" id="dados" style="visibility: hidden;">
-                <form id="tabela-dados" class="tabela-dados">
-                    <label for="telefone">Número de telefone:</label>
-                    <input type="tel" id="telefone">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email">
-                    <button class="confirmacao" type="submit">confirmar</button>
-                </form>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Médico</th>
+                            <th>Especialidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if consultas %}
+                            {% for consulta in consultas %}
+                                <tr onclick="window.location.href='{% url 'consultainfo' consulta.id %}'">
+                                    <td>{{ consulta.data|date:"d/m/Y" }}</td>
+                                    <td>{{ consulta.hora|time:"H:i" }}</td>
+                                    <td>{{ consulta.medico }}</td>
+                                    <td>{{ consulta.especialidade }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="4">Nenhuma consulta marcada.</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>                    
+                </table>
             </div>
         </div>
-    </main>
+    </main>    
 
     <footer class="rodape">
-        <p>Para confirmar, cancelar, reagendar ou checar dados da consulta, selecione um item da tabela.</p>
+        <p>Para confirmar, cancelar, reagendar ou checar endereço, selecione um item da tabela.</p>
     </footer>
-
-    <script src='{% static "js/usuarios.js" %}'></script>
 </body>
 </html>

@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href='{% static "css/perfil.css" %}'>
+</head>
+<body>
+
+    <header class="cabecalho">
+
+        <img class="icon" src='{% static "images/coracao2.png" %}' alt="Ícone de coração">
+        <nav class="menu">
+            {% if usuarios %}
+                <a class="nome">{{ usuarios.0.Nome }}</a>
+                <a href="{% url 'listagem_usuarios' %}">
+                    <button class="consultas">Consultas</button>
+                </a>                
+            {% endif %}
+        </nav>
+    </header>
+
+    <main class="conteudo-tabela">
+        <div class="tabela" id="dados">
+            <section class="Titulo">
+                <h3>Dados do Perfil</h3>
+            </section>
+            <form id="tabela-dados" class="tabela-dados" method="post" action="{% url 'perfil_usuario' usuarios.0.id_usuario %}">
+                {% csrf_token %}
+                <div class="formulario">
+                    <label for="telefone">Número de telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" value="{{ usuarios.0.telefone }}" required>
+                    <a class="mensagem-erro">*Campo obrigatório</a> 
+                </div>
+                <div class="formulario">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ usuarios.0.email }}" required>
+                    <a class="mensagem-erro">*Campo obrigatório</a> 
+                </div>
+                <button class="confirmacao" type="submit">Confirmar</button>
+            </form>            
+        </div>
+    </main>
+
+</body>
+</html>

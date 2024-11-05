@@ -9,28 +9,48 @@ body {
     background-color: #e2e2e2;
 }
 
-.cabecalho{
+.cabecalho {
     padding-bottom: 20px;
     padding-top: 20px;
-    padding-left: 20px;
-    min-height: 20vh;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+}
+
+.menu {
+    display: flex;
+    gap: 80px;
 }
 
 .icon {
-    max-width: 150px;
+    max-width: 60px;
     width: 8%;
-    min-width: 60px;
 }
 
-.conteudo {
-    min-height: 60vh;
+.nome {
+    font-size: 16px;
+}
+
+.consultas {
+    border: none;
+    background-color: #e2e2e2;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.conteudo-tabela {
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.form-div {
+.tabela {
+    margin-top: 40px;
+    margin-bottom: 40px;
     width: 95%;
     max-width: 800px;
     border-radius: 14px;
@@ -41,18 +61,14 @@ body {
 
 .Titulo {
     text-align: center;
-    padding: 24px;
+    padding: 16px;
     background: linear-gradient(90deg, #0cbff5, #0cf5e9); 
     font-size: 30px;
-    color: #333;      
+    color: #333;   
 }
 
-.form{
+.tabela-dados {
     padding: 18px;
-}
-
-.formulario {
-    padding-bottom: 2px;
 }
 
 label {
@@ -70,15 +86,11 @@ input {
     border-radius: 10px;
 }
 
-a {
-    visibility:hidden;
+.mensagem-erro {
+    visibility: hidden;
 }
 
-.error-message {
-    margin-top: 14px;
-}
-
-button {
+.confirmacao {
     margin-top: 10px;
     width: 100%;
     padding: 12px;
@@ -90,18 +102,8 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.confirmacao:hover {
     background-color: #0cf5e9;
     transition: 1s;
     color: #333;
-}
-
-.formulario.error input {
-    border-color: red;
-}
-
-.formulario.error a {
-    border-color: red;
-    visibility: visible;
-    color: red;
 }

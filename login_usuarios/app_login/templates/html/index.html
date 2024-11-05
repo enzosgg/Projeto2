@@ -9,32 +9,35 @@
     <link rel="stylesheet" href='{% static "css/style.css" %}'>
 </head>
 <body>
-    <header class ="cabecalho">
+    <header class="cabecalho">
         <img class="icon" src='{% static "images/coracao2.png" %}' alt="">
     </header>
     <main class="conteudo">    
-        <div class=form-div>
+        <div class="form-div">
             <section class="Titulo">
                 <h3>Digite CPF e Senha para efetuar Login</h3>
             </section>
-            <form action='{% url "listagem_usuarios" %}' method="post" id="form" class="form">
+            <form action='{% url "login" %}' method="post" id="form" class="form">
                 {% csrf_token %}
                 <div class="formulario">
                     <label for="CPF">CPF:</label> 
                     <input name="CPF" type="text" id="CPF" placeholder="000.000.000-00" maxlength="14">
-                    <a>Mensagem de erro</a>
+                    <a>*Campo obrigatório</a>
                 </div>
                 <div class="formulario">   
                     <label for="Senha">Senha:</label>
-                    <input name="Senha" type="password" id="Senha" placeholder="Digite sua Senha">
-                    <a>Mensagem de erro</a> 
+                    <input name="Senha" type="password" id="Senha" placeholder="Digite sua Senha" maxlength="14">
+                    <a>*Campo obrigatório</a> 
                 </div>
-                <button type="submit">Login</button> 
+                <button type="submit">Login</button>
+                <p id="error-message" class="error-message">
+                    {% if error_message %}{{ error_message }}{% endif %}
+                </p>
             </form>
         </div>    
     </main>   
 
     <script src='{% static "js/script.js" %}'></script>
-
+      
 </body>
 </html>
