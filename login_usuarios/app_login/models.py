@@ -10,11 +10,10 @@ class Usuario(models.Model):
     email = models.EmailField(null=True)
 
 class Consulta(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='consultas')
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='consultas', null=True)
     data = models.DateField()
     hora = models.TimeField()
     medico = models.CharField(max_length=50)
     especialidade = models.CharField(max_length=50)
     local = models.CharField(max_length=100) 
     endereco = models.CharField(max_length=200) 
-

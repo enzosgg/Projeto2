@@ -14,9 +14,7 @@
         <nav class="menu">
             {% if usuarios %}
                 <a class="nome">{{ usuarios.0.Nome }}</a> 
-                <a href="{% url 'perfil_usuario' usuarios.0.id_usuario %}">
-                    <button class="perfil">Perfil</button>
-                </a>
+                <a href="{% url 'perfil_usuario' usuarios.0.id_usuario %}"><button class="perfil">Perfil</button></a>
             {% endif %}
         </nav>
     </header>
@@ -34,6 +32,7 @@
                             <th>Hora</th>
                             <th>Médico</th>
                             <th>Especialidade</th>
+                            <th>Local</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,11 +43,12 @@
                                     <td>{{ consulta.hora|time:"H:i" }}</td>
                                     <td>{{ consulta.medico }}</td>
                                     <td>{{ consulta.especialidade }}</td>
+                                    <td>{{ consulta.local }}</td>
                                 </tr>
                             {% endfor %}
                         {% else %}
                             <tr>
-                                <td colspan="4">Nenhuma consulta marcada.</td>
+                                <td colspan="5">Nenhuma consulta marcada.</td>
                             </tr>
                         {% endif %}
                     </tbody>                    

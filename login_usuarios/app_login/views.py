@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.contrib import messages
 from .models import Usuario, Consulta
 
 
@@ -63,6 +64,43 @@ def login(request):
         'error') == 'invalid' else None
     return render(request, 'html/index.html', {'error_message': error_message})
 
+
 def consulta_info(request, consulta_id):
     consulta = get_object_or_404(Consulta, id=consulta_id)
-    return render(request, 'html/consultainfo.html', {'consulta': consulta})
+    usuario_id = request.session.get('usuario_id')
+    usuario = get_object_or_404(Usuario, id_usuario=usuario_id)
+
+    consultas_alternativas = Consulta.objects.exclude(
+        id=consulta_id).filter(usuario__isnull=True)
+
+    return render(request, 'html/consultainfo.html', {
+        'consulta': consulta,
+        'consultas_alternativas': consultas_alternativas,
+        'usuario_nome': usuario.Nome
+    })
+
+
+def cancelar_consulta(request, consulta_id):
+    consulta = get_object_or_404(Consulta, id=consulta_id)
+    consulta.delete()
+    messages.success(request, 'Consulta cancelada com sucesso!')
+    return redirect('listagem_usuarios')
+
+
+def reagendar_consulta(request, consulta_id, nova_consulta_id):
+
+    consulta_atual = get_object_or_404(Consulta, id=consulta_id)
+    nova_consulta = get_object_or_404(Consulta, id=nova_consulta_id)
+
+    consulta_atual.data = nova_consulta.data
+    consulta_atual.hora = nova_consulta.hora
+    consulta_atual.medico = nova_consulta.medico
+    consulta_atual.especialidade = nova_consulta.especialidade
+    consulta_atual.local = nova_consulta.local
+    consulta_atual.endereco = nova_consulta.endereco
+    consulta_atual.save()
+
+    nova_consulta.delete()
+
+    messages.success(request, "Consulta reagendada com sucesso!")
+    return redirect('listagem_usuarios')
