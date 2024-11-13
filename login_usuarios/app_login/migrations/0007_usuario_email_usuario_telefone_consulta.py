@@ -29,6 +29,8 @@ class Migration(migrations.Migration):
                 ('hora', models.TimeField()),
                 ('medico', models.CharField(max_length=50)),
                 ('especialidade', models.CharField(max_length=50)),
+                ('local', models.CharField(max_length=100)),
+                ('endereco', models.CharField(max_length=200)),
                 ('usuario', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='consultas', to='app_login.usuario')),
             ],
         ),
